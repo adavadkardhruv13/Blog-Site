@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %} Contact {% endblock %}
+{% block contactactive %} active {% endblock %}
+
+{% block body %}
+<div class="container my-3 ">
+    <h1>Contact iCoders</h1>
+    </center>
+{% if name %}
+    <center>
+        <h2>
+            Thanks {{name}}!
+        </h2>
+        <p>
+            we received your mail and will respond shorly...
+        </p>
+    </center>
+{ % else %}
+<form method="POST" acton=" /contact">
+    {% csrf_token %}
+    <div class="mb-3">
+    <label for="name" >Name</label>
+    <input type="text" class="form-control" id="name" name="name" aria-describedby="name">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="number" class="form-label">Phone Number</label>
+    <input type="phone" class="form-control" id="number" name="phone" >
+  </div>
+   <div class="mb-3">
+    <label for="content" class="form-label">How may we help you</label>
+    <textarea class="form-control" name = "content" id="content" cols="30" rows="5"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endif %}
+
+
+
+</div>
+{% endblock %}
